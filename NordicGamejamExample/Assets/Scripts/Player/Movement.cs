@@ -9,6 +9,7 @@ public class Movement : MonoBehaviour
     KeyCode runKey;
     [SerializeField]
     KeyCode altRunKey;
+    public bool Imdead { get; set; }
     // Use this for initialization
     void Start()
     {
@@ -19,23 +20,34 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (Input.GetAxis("Vertical") > 0)
+        if (!Imdead)
         {
-            animator.SetBool("isWalking", true);
-        }
-        else
-        {
-            animator.SetBool("isWalking", false);
-        }
-        if ((Input.GetKey(runKey) || Input.GetKey(altRunKey)) && Input.GetAxis("Vertical") > 0)
-        {
-            animator.SetBool("run", true);
-        }
-        else
-        {
-            animator.SetBool("run", false);
-        }
+            if (Input.GetAxis("Vertical") > 0)
+            {
+                animator.SetBool("isWalking", true);
+            }
+            else
+            {
+                animator.SetBool("isWalking", false);
+            }
+            if (Input.GetAxis("Vertical") < 0)
+            {
+                animator.SetBool("isReversing", true);
+            }
+            else
+            {
+                animator.SetBool("isReversing", false);
+            }
+            if ((Input.GetKey(runKey) || Input.GetKey(altRunKey)) && Input.GetAxis("Vertical") > 0)
+            {
+                animator.SetBool("run", true);
+            }
+            else
+            {
+                animator.SetBool("run", false);
+            }
 
-        transform.Rotate(new Vector3(0, Input.GetAxis("Horizontal"), 0));
+            transform.Rotate(new Vector3(0, Input.GetAxis("Horizontal"), 0));
+        }
     }
 }
