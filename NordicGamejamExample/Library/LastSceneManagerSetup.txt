@@ -1,0 +1,4 @@
+sceneSetups:
+- path: D:/Unity/TestJam/Assets/_Scenes/level.unity
+  isLoaded: 1
+  isActive: 1
