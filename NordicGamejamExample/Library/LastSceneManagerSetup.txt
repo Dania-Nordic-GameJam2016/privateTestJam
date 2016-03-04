@@ -1,4 +1,8 @@
 sceneSetups:
+<<<<<<< HEAD
 - path: D:/Unity/TestJam/Assets/_Scenes/level.unity
+=======
+- path: Assets/_Scenes/Martin&Michael/PlayerTest.unity
+>>>>>>> 078afb4cab7c59166750a7b9bdef33b1e959a8a2
   isLoaded: 1
   isActive: 1
