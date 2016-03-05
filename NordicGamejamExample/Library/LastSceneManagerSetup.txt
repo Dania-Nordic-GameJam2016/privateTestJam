@@ -1,8 +1,4 @@
 sceneSetups:
-<<<<<<< HEAD
-- path: Assets/_Scenes/Mirza&Jonas/Menu.unity
-=======
 - path: Assets/_Scenes/Mirza&Jonas/level.unity
->>>>>>> 0f2411d2d00ec0b5711d15335473b3d98ec85daa
   isLoaded: 1
   isActive: 1
