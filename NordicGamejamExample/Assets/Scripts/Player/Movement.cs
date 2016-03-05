@@ -18,7 +18,7 @@ public class Movement : MonoBehaviour
     [SerializeField]
     KeyCode altRunKey;
     [SerializeField]
-    float speed;
+    public float rotationSpeed = 1.8f;
     [SerializeField]
     Players player;
     string horizontal;
@@ -82,13 +82,15 @@ public class Movement : MonoBehaviour
             if ((Input.GetKey(runKey) || Input.GetKey(altRunKey)) && Input.GetAxis(vertical) > 0)
             {
                 animator.SetBool("run", true);
+                rotationSpeed = 1.8f;
             }
             else
             {
                 animator.SetBool("run", false);
+                rotationSpeed = 4;
             }
 
-            transform.Rotate(new Vector3(0, Input.GetAxis(horizontal) * speed, 0));
+            transform.Rotate(new Vector3(0, Input.GetAxis(horizontal) * rotationSpeed, 0));
         }
     }
 }
