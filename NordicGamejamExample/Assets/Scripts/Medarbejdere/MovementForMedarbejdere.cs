@@ -18,7 +18,7 @@ public class MovementForMedarbejdere : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
-        //agent.SetDestination(Vector3.zero);
+        GameObject.Find("Player").GetComponent<InactiveManager>().Workers.Add(gameObject);
     }
 
     // Update is called once per frame
@@ -36,7 +36,7 @@ public class MovementForMedarbejdere : MonoBehaviour
         else if (timer <= 0)
         {
             animator.SetBool("walk", false);
-            timer = Random.Range(0,6);
+            timer = Random.Range(0, 6);
         }
 
 

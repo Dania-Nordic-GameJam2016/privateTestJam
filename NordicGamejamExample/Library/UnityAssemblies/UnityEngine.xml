@@ -12002,6 +12002,7 @@
         <para>This function is a special case of SetShortArrayRegion(), called with region size set to 1.See Also: <see href="jniTOC" cref="Java Native Interface Specification (Oracle)" /></para>
       </summary>
     </member>
+<<<<<<< HEAD
     <member name="M:UnityEngine.AndroidJNI.SetShortField(System.IntPtr,System.IntPtr,System.Int16)">
       <summary>This function sets the value of an instance (nonstatic) field of an object.</summary>
     </member>
@@ -12033,6 +12034,9 @@
       <summary>This function ets the value of a static field of an object.</summary>
     </member>
     <member name="M:UnityEngine.AndroidJNI.SetStaticStringField(System.IntPtr,System.IntPtr,System.String)">
+=======
+    <member name="P:UnityEngine.Color.green">
+>>>>>>> 6073a556b7a44f367780f1b3cc19e5ead871d4f2
       <summary>
         <para>This function ets the value of a static field of an object.</para>
         <para>This is a convenience function that calls SetStaticObjectField() with the same parameters, but performs the necessary marshalling of the string value.See Also: <see cref="UnityEngine.AndroidJNI.SetStaticObjectField" />.</para>
@@ -17763,6 +17767,13 @@
         <para>Performs smoothing of near edge regions.</para>
         <para>Helps to compensate lack of linear interpolation across the edges of cubemap in GPU.Usually you will want to call this function for the cubemap which is going to be used for glossy reflections.</para>
       </summary>
+<<<<<<< HEAD
+=======
+      <param name="formFields">A dictionary containing the form keys and values to serialize.</param>
+      <returns>
+        <para>A byte array containing the serialized form. The form's keys and values have been URL-encoded.</para>
+      </returns>
+>>>>>>> 6073a556b7a44f367780f1b3cc19e5ead871d4f2
     </member>
     <member name="P:UnityEngine.CullingGroup.enabled">
       <summary>
@@ -42935,8 +42946,18 @@
     <member name="F:UnityEngine.HumanBodyBones.LeftFoot">
       <summary>This is the Left Ankle bone.</summary>
     </member>
+<<<<<<< HEAD
     <member name="F:UnityEngine.HumanBodyBones.RightFoot">
       <summary>This is the Right Ankle bone.</summary>
+=======
+    <member name="P:UnityEngine.Profiler.usedHeapSize">
+      <summary>
+        <para>Heap size used by the program.</para>
+      </summary>
+      <returns>
+        <para>Size of the used heap in bytes, (or 0 if the profiler is disabled).</para>
+      </returns>
+>>>>>>> 6073a556b7a44f367780f1b3cc19e5ead871d4f2
     </member>
     <member name="F:UnityEngine.HumanBodyBones.Spine">
       <summary>This is the first Spine bone.</summary>
@@ -43259,8 +43280,15 @@
     <member name="F:UnityEngine.KeyCode.F11">
       <summary>F11 function key.</summary>
     </member>
+<<<<<<< HEAD
     <member name="F:UnityEngine.KeyCode.F12">
       <summary>F12 function key.</summary>
+=======
+    <member name="P:UnityEngine.SystemInfo.supportsShadows">
+      <summary>
+        <para>Are built-in shadows supported? (Read Only)</para>
+      </summary>
+>>>>>>> 6073a556b7a44f367780f1b3cc19e5ead871d4f2
     </member>
     <member name="F:UnityEngine.KeyCode.F13">
       <summary>F13 function key.</summary>

@@ -18897,8 +18897,15 @@
     <member name="F:UnityEditor.TextureImporterFormat.EAC_R">
       <summary>ETC2/EAC compressed 4 bits / pixel unsigned R texture format.</summary>
     </member>
+<<<<<<< HEAD
     <member name="F:UnityEditor.TextureImporterFormat.EAC_R_SIGNED">
       <summary>ETC2/EAC compressed 4 bits / pixel signed R texture format.</summary>
+=======
+    <member name="P:UnityEditor.PlayerSettings.PSVita.manualPath">
+      <summary>
+        <para>PS Vita sofware manual.</para>
+      </summary>
+>>>>>>> 6073a556b7a44f367780f1b3cc19e5ead871d4f2
     </member>
     <member name="F:UnityEditor.TextureImporterFormat.EAC_RG">
       <summary>ETC2/EAC compressed 8 bits / pixel unsigned RG texture format.</summary>
@@ -18924,8 +18931,18 @@
     <member name="F:UnityEditor.TextureImporterFormat.ASTC_RGB_6x6">
       <summary>ASTC compressed RGB texture format, 6x6 block size.</summary>
     </member>
+<<<<<<< HEAD
     <member name="F:UnityEditor.TextureImporterFormat.ASTC_RGB_8x8">
       <summary>ASTC compressed RGB texture format, 8x8 block size.</summary>
+=======
+    <member name="M:UnityEditor.VersionControl.Provider.Status(UnityEditor.VersionControl.Asset)">
+      <summary>
+        <para>Start a task that will fetch the most recent status from revision control system.</para>
+      </summary>
+      <param name="assets">The assets fetch new state for.</param>
+      <param name="asset">The asset path to fetch new state for.</param>
+      <param name="recursively">If any assets specified are folders this flag will get status for all descendants of the folder as well.</param>
+>>>>>>> 6073a556b7a44f367780f1b3cc19e5ead871d4f2
     </member>
     <member name="F:UnityEditor.TextureImporterFormat.ASTC_RGB_10x10">
       <summary>ASTC compressed RGB texture format, 10x10 block size.</summary>
