@@ -2057,6 +2057,10 @@
     <member name="P:UnityEngine.Networking.NetworkManager.scriptCRCCheck">
       <summary>
         <para>Flag for using the script CRC check between server and clients.</para>
+<<<<<<< HEAD
+=======
+>>>>>>> 5794376b26b2691f6ad165b93f56619c88d015ee
+>>>>>>> 2701b87160468fc03e69c44a2a6e86fcbee16710
       </summary>
     </member>
     <member name="P:UnityEngine.Networking.NetworkManager.secureTunnelEndpoint">

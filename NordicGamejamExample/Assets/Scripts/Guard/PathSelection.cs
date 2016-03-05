@@ -50,7 +50,8 @@ public class PathSelection : MonoBehaviour
 
     void ChoosePatrol()
     {
-        int random = (int)Mathf.Round(Random.Range(0, 1));
+        int random = (int)Mathf.Round(Random.Range(0, 2));
+        Debug.Log(random);
         float distanceToChild0 = Vector3.Distance(transform.position, waypoints.transform.GetChild(0).position);
         float distanceToChild5 = Vector3.Distance(transform.position, waypoints.transform.GetChild(5).position);
         float distanceToChild12 = Vector3.Distance(transform.position, waypoints.transform.GetChild(12).position);
@@ -112,7 +113,12 @@ public class PathSelection : MonoBehaviour
 
     void ChooseNode()
     {
+        if (patrolIndex >= patrol.Length - 1)
+        {
+            patrolIndex = 0;
+        }
         transform.position = Vector3.MoveTowards(transform.position, waypoints.transform.GetChild(patrol[patrolIndex]).position, 5 * Time.deltaTime);
+
         float dist = Mathf.Sqrt(Mathf.Pow(transform.position.x - waypoints.transform.GetChild(patrol[patrolIndex]).position.x, 2) + Mathf.Pow(transform.position.z - waypoints.transform.GetChild(patrol[patrolIndex]).position.z, 2));
         Vector3 target = waypoints.transform.GetChild(patrol[patrolIndex]).position - transform.position;
         target.y = 0;
@@ -124,9 +130,6 @@ public class PathSelection : MonoBehaviour
             patrolIndex++;
         }
 
-        if (patrolIndex == kids.Count - 1)
-        {
-            patrolIndex = 0;
-        }
+        //Debug.Log(patrol.Length + " " + patrolIndex);
     }
 }

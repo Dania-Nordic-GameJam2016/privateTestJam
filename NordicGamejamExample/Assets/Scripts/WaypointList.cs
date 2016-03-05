@@ -28,7 +28,6 @@ public class WaypointList : MonoBehaviour
         patrol8 = new int[] { 17, 12, 11, 10, 4, 5, 6, 11, 10, 16, 15, 14, 13, 7, 6, 0, 1, 7, 8, 9, 15, 16, 17 };
         waypoints = GameObject.Find("Waypoints");
         children = waypoints.transform.childCount;
-        Debug.Log(patrol1.Length);
         imReady = true;
     }
 }
