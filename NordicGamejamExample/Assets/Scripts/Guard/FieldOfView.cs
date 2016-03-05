@@ -21,12 +21,17 @@ public class FieldOfView : MonoBehaviour
     public float edgeDistanceThreshold;
     public float maskCutawayDistance = .1f;
 
+    NavMeshAgent agent;
+    GameObject player;
+
     void Start()
     {
         viewMesh = new Mesh();
         viewMesh.name = "View Mesh";
         viewMeshFilter.mesh = viewMesh;
         StartCoroutine("FindTargetsWithDelay", .2f);
+        agent = GetComponent<NavMeshAgent>();
+        player = GameObject.Find("Player");
     }
 
     IEnumerator FindTargetsWithDelay(float delay)
@@ -45,8 +50,16 @@ public class FieldOfView : MonoBehaviour
 
     }
 
-    void Update()
+    void FixedUpdate()
     {
+        if (transform.GetChild(2).GetComponent<Renderer>().material.color == Color.red)
+        {
+            float dist = Mathf.Sqrt(Mathf.Pow(transform.position.x - player.transform.position.x, 2) + Mathf.Pow(transform.position.z - player.transform.position.z, 2));
+            if (dist < 1)
+            {
+                player.GetComponent<Caught>().GotCaught();
+            }
+        }
     }
 
     private void FoundEnemy()
@@ -54,6 +67,7 @@ public class FieldOfView : MonoBehaviour
         if (visibleTargets.Count > 0)
         {
             transform.GetChild(2).GetComponent<Renderer>().material.color = Color.red;
+            agent.SetDestination(player.transform.position);
         }
         else
         {

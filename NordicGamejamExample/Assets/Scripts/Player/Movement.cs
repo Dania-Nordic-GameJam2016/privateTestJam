@@ -9,6 +9,8 @@ public class Movement : MonoBehaviour
     KeyCode runKey;
     [SerializeField]
     KeyCode altRunKey;
+    [SerializeField]
+    float speed;
     public bool Imdead { get; set; }
     // Use this for initialization
     void Start()
@@ -47,7 +49,7 @@ public class Movement : MonoBehaviour
                 animator.SetBool("run", false);
             }
 
-            transform.Rotate(new Vector3(0, Input.GetAxis("Horizontal"), 0));
+            transform.Rotate(new Vector3(0, Input.GetAxis("Horizontal") * speed, 0));
         }
     }
 }

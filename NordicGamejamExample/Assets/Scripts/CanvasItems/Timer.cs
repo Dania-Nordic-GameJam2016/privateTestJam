@@ -5,23 +5,23 @@ using UnityEngine.SceneManagement;
 
 public class Timer : MonoBehaviour {
 
-    float timer = 10.0f;
+    float timer = 0;
 
     void Update()
     {
-        timer -= Time.deltaTime;
+        timer += Time.deltaTime;
 
-        if(timer <= 0)
-        {
-            timer = 0;
+        //if(timer <= 0)
+        //{
+        //    timer = 0;
 
 
-            StartCoroutine(EndGame());
-        }
+        //    //StartCoroutine(EndGame());
+        //}
     }
     void OnGUI()
     {
-        GUI.Box(new Rect(10, 10, 30, 20), "" + timer.ToString("0"));
+        GUI.Box(new Rect(10, 10, 50, 20), "" + timer.ToString("0"));
     }
 
     IEnumerator EndGame()

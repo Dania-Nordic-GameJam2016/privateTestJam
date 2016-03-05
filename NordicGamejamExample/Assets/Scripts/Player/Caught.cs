@@ -36,7 +36,7 @@ public class Caught : MonoBehaviour
     public IEnumerator DeathtTimer()
     {
         yield return new WaitForSeconds(3);
-        SceneManager.LoadScene("level");
+        SceneManager.LoadScene("Menu");
 
     }
 }
