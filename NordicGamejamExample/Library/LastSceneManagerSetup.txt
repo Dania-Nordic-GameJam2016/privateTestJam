@@ -1,4 +1,12 @@
 sceneSetups:
+<<<<<<< HEAD
 - path: Assets/_Scenes/Mirza&Jonas/Scene1.unity
+=======
+<<<<<<< HEAD
+- path: Assets/_Scenes/Niclas&Poul/Scene1.unity
+=======
+- path: Assets/_Scenes/Mirza&Jonas/level.unity
+>>>>>>> 8c2ec010dcfbdb98dcdae275c6d0b3ae4f8aa081
+>>>>>>> f8ea118a46eb0bfbbe1a07fcefdf9f88a50bedb9
   isLoaded: 1
   isActive: 1
