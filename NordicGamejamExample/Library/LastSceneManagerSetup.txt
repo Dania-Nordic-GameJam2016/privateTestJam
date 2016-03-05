@@ -2,6 +2,9 @@ sceneSetups:
 - path: Assets/_Scenes/Mirza&Jonas/level.unity
   isLoaded: 1
   isActive: 1
+- path: Assets/_Scenes/Martin&Michael/Workers.unity
+  isLoaded: 1
+  isActive: 0
 - path: Assets/_Scenes/Mirza&Jonas/Scene2.unity
   isLoaded: 1
   isActive: 0
