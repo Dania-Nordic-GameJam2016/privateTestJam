@@ -7,6 +7,7 @@ public class InactiveManager : MonoBehaviour
     public List<GameObject> Workers { get; set; }
     public List<GameObject> Walls { get; set; }
     public List<GameObject> Players { get; set; }
+    public List<GameObject> Agents { get; set; }
     float timer;
     // Use this for initialization
     void Awake()
@@ -14,6 +15,7 @@ public class InactiveManager : MonoBehaviour
         Workers = new List<GameObject>();
         Walls = new List<GameObject>();
         Players = new List<GameObject>();
+        Agents = new List<GameObject>();
     }
 
     // Update is called once per frame
@@ -38,6 +40,27 @@ public class InactiveManager : MonoBehaviour
                     {
                         item.SetActive(true);
                     }
+                    if (dist < 2)
+                    {
+                        GameObject nearest = null;
+                        float lastDist = 9999;
+                        foreach (GameObject agent in Agents)
+                        {
+                            List<GameObject> l = GetComponent<InactiveManager>().Players;
+                            Movement mov = item.GetComponent<Movement>();
+                            float distToClosestAgent = Mathf.Sqrt(Mathf.Pow(agent.transform.position.x - item.transform.position.x, 2) + Mathf.Pow(agent.transform.position.z - item.transform.position.z, 2));
+
+                            if (distToClosestAgent < lastDist)
+                            {
+                                nearest = agent;
+                                lastDist = distToClosestAgent;
+                            }
+                        }
+                        if (nearest != null)
+                        {
+                            nearest.GetComponent<NavMeshAgent>().SetDestination(player.transform.position);
+                        }
+                    }
                 }
 
                 foreach (GameObject item in Walls)
@@ -61,7 +84,7 @@ public class InactiveManager : MonoBehaviour
             if (!item.GetComponent<Movement>().Imdead)
             {
                 endGame = false;
-                
+
             }
         }
 

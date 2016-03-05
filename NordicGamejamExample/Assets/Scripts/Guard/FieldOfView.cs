@@ -33,6 +33,7 @@ public class FieldOfView : MonoBehaviour
         StartCoroutine("FindTargetsWithDelay", .2f);
         agent = GetComponent<NavMeshAgent>();
         gameManager = GameObject.Find("GameManager");
+        gameManager.GetComponent<InactiveManager>().Agents.Add(gameObject);
     }
 
     IEnumerator FindTargetsWithDelay(float delay)
