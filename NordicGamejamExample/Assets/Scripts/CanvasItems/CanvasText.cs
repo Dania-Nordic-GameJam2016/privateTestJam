@@ -16,7 +16,7 @@ public class CanvasText : MonoBehaviour {
 	void Update ()
     {
 
-        if (GameObject.Find("GameOverCheckPoint").GetComponent<GameOverCheck>().GameOver)
+        if (GameObject.Find("EndGameTrigger").GetComponent<GameOverCheck>().GameOver)
         {
             //gameObject.SetActive(true);
             GameObject.Find("Canvas/Text").GetComponent<Text>().text = "You won!";
