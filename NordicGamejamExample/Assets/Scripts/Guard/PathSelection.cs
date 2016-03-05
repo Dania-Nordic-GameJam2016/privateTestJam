@@ -4,6 +4,8 @@ using System.Collections.Generic;
 
 public class PathSelection : MonoBehaviour
 {
+    public float movementSpeed;
+    private Animator animator;
     private GameObject waypoints;
     private GameObject manager;
     private List<Transform> kids;
@@ -15,6 +17,7 @@ public class PathSelection : MonoBehaviour
 
     void Start()
     {
+        animator = GetComponent<Animator>();
         patrol = new int[0];
         kids = new List<Transform>();
         waypoints = GameObject.Find("Waypoints");
@@ -117,7 +120,8 @@ public class PathSelection : MonoBehaviour
         {
             patrolIndex = 0;
         }
-        transform.position = Vector3.MoveTowards(transform.position, waypoints.transform.GetChild(patrol[patrolIndex]).position, 5 * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, waypoints.transform.GetChild(patrol[patrolIndex]).position, movementSpeed * Time.deltaTime);
+        animator.SetFloat("Speed", 1);  
 
         float dist = Mathf.Sqrt(Mathf.Pow(transform.position.x - waypoints.transform.GetChild(patrol[patrolIndex]).position.x, 2) + Mathf.Pow(transform.position.z - waypoints.transform.GetChild(patrol[patrolIndex]).position.z, 2));
         Vector3 target = waypoints.transform.GetChild(patrol[patrolIndex]).position - transform.position;

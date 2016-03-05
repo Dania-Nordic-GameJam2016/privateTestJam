@@ -53,11 +53,11 @@ public class FieldOfView : MonoBehaviour
     {
         if (visibleTargets.Count > 0)
         {
-            transform.GetChild(0).GetComponent<Renderer>().material.color = Color.red;
+            transform.GetChild(2).GetComponent<Renderer>().material.color = Color.red;
         }
         else
         {
-            transform.GetChild(0).GetComponent<Renderer>().material.color = Color.green;
+            transform.GetChild(2).GetComponent<Renderer>().material.color = Color.green;
         }
     }
 
