@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Timer : MonoBehaviour {
 
@@ -13,11 +14,19 @@ public class Timer : MonoBehaviour {
         if(timer <= 0)
         {
             timer = 0;
-            //GameObject.Find("Canvas/Text").GetComponent<Text>().text = "GameOver!";
+
+
+            StartCoroutine(EndGame());
         }
     }
     void OnGUI()
     {
-        GUI.Box(new Rect(10, 10, 50, 20), "" + timer.ToString("0"));
+        GUI.Box(new Rect(10, 10, 30, 20), "" + timer.ToString("0"));
+    }
+
+    IEnumerator EndGame()
+    {
+        yield return new WaitForSeconds(5);
+        SceneManager.LoadScene("Menu");
     }
 }
