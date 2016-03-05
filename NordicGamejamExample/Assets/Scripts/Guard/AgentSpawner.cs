@@ -28,11 +28,14 @@ public class AgentSpawner : MonoBehaviour
 
             if (agentIndex % randomModulosFactor == 0 && agentIndex != 0)
             {
-                agents = Instantiate(agentElitePrefab) as GameObject;
+                //agents = Instantiate(agentElitePrefab) as GameObject;
+                agents = Instantiate(agentElitePrefab, transform.position, Quaternion.identity) as GameObject;
             }
             else
             {
-                agents = Instantiate(agentPrefab) as GameObject;
+                //agents = Instantiate(agentPrefab) as GameObject;
+                agents = Instantiate(agentPrefab, transform.position, Quaternion.identity) as GameObject;
+
             }
 
             agents.name = "Agent " + agentIndex;

@@ -14,6 +14,7 @@ public class PathSelection : MonoBehaviour
     public int[] patrol;
     public int[] mypath;
     private bool pathChosen = false;
+    NavMeshAgent agent;
 
     void Start()
     {
@@ -24,6 +25,7 @@ public class PathSelection : MonoBehaviour
         manager = GameObject.Find("Game Manager");
         children = waypoints.transform.childCount;
         ExposeChildren();
+        agent = GetComponent<NavMeshAgent>();
     }
 
     void Update()
@@ -112,6 +114,7 @@ public class PathSelection : MonoBehaviour
                 patrol = manager.GetComponent<WaypointList>().patrol8.Clone() as int[];
             }
         }
+        agent.SetDestination(waypoints.transform.GetChild(patrol[patrolIndex]).position);
     }
 
     void ChooseNode()
@@ -120,18 +123,21 @@ public class PathSelection : MonoBehaviour
         {
             patrolIndex = 0;
         }
-        transform.position = Vector3.MoveTowards(transform.position, waypoints.transform.GetChild(patrol[patrolIndex]).position, movementSpeed * Time.deltaTime);
+        //transform.position = Vector3.MoveTowards(transform.position, waypoints.transform.GetChild(patrol[patrolIndex]).position, movementSpeed * Time.deltaTime);
+        
+
         animator.SetFloat("Speed", 1);  
 
         float dist = Mathf.Sqrt(Mathf.Pow(transform.position.x - waypoints.transform.GetChild(patrol[patrolIndex]).position.x, 2) + Mathf.Pow(transform.position.z - waypoints.transform.GetChild(patrol[patrolIndex]).position.z, 2));
-        Vector3 target = waypoints.transform.GetChild(patrol[patrolIndex]).position - transform.position;
-        target.y = 0;
-        Quaternion rotation = Quaternion.LookRotation(target);
-        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * 7);
+        //Vector3 target = waypoints.transform.GetChild(patrol[patrolIndex]).position - transform.position;
+        //target.y = 0;
+        //Quaternion rotation = Quaternion.LookRotation(target);
+        //transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * 7);
 
         if (dist < 0.5f)
         {
             patrolIndex++;
+            agent.SetDestination(waypoints.transform.GetChild(patrol[patrolIndex]).position);
         }
 
         //Debug.Log(patrol.Length + " " + patrolIndex);
