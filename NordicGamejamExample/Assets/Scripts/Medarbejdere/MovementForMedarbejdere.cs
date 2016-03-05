@@ -18,7 +18,7 @@ public class MovementForMedarbejdere : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
-        GameObject.Find("Player").GetComponent<InactiveManager>().Workers.Add(gameObject);
+        GameObject.Find("GameManager").GetComponent<InactiveManager>().Workers.Add(gameObject);
     }
 
     // Update is called once per frame

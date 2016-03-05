@@ -22,7 +22,8 @@ public class FieldOfView : MonoBehaviour
     public float maskCutawayDistance = .1f;
 
     NavMeshAgent agent;
-    GameObject player;
+    GameObject gameManager;
+    GameObject lastSeenPlayer;
 
     void Start()
     {
@@ -31,7 +32,7 @@ public class FieldOfView : MonoBehaviour
         viewMeshFilter.mesh = viewMesh;
         StartCoroutine("FindTargetsWithDelay", .2f);
         agent = GetComponent<NavMeshAgent>();
-        player = GameObject.Find("Player");
+        gameManager = GameObject.Find("GameManager");
     }
 
     IEnumerator FindTargetsWithDelay(float delay)
@@ -54,10 +55,27 @@ public class FieldOfView : MonoBehaviour
     {
         if (transform.GetChild(2).GetComponent<Renderer>().material.color == Color.red)
         {
-            float dist = Mathf.Sqrt(Mathf.Pow(transform.position.x - player.transform.position.x, 2) + Mathf.Pow(transform.position.z - player.transform.position.z, 2));
-            if (dist < 1)
+            GameObject nearest = null;
+            float lastDist = 9999;
+            foreach (GameObject item in gameManager.GetComponent<InactiveManager>().Players)
             {
-                player.GetComponent<Caught>().GotCaught();
+                List <GameObject> l = gameManager.GetComponent<InactiveManager>().Players;
+                Movement mov = item.GetComponent<Movement>();
+                float dist = Mathf.Sqrt(Mathf.Pow(transform.position.x - item.transform.position.x, 2) + Mathf.Pow(transform.position.z - item.transform.position.z, 2));
+
+                if (dist < lastDist)
+                {
+                    nearest = item;
+                    lastDist = dist;
+                }
+            }
+            if (lastDist < 1)
+            {
+                nearest.GetComponent<Caught>().GotCaught();
+            }
+            else
+            {
+                agent.SetDestination(nearest.transform.position);
             }
         }
     }
@@ -67,7 +85,6 @@ public class FieldOfView : MonoBehaviour
         if (visibleTargets.Count > 0)
         {
             transform.GetChild(2).GetComponent<Renderer>().material.color = Color.red;
-            agent.SetDestination(player.transform.position);
         }
         else
         {

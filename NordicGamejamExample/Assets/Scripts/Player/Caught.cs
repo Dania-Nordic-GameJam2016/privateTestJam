@@ -29,8 +29,7 @@ public class Caught : MonoBehaviour
     {
         animator.SetTrigger("death");
         GetComponent<Movement>().Imdead = true;
-
-        StartCoroutine(DeathtTimer());
+        StartCoroutine(ActualDeathtTimer());
     }
 
     public IEnumerator DeathtTimer()
@@ -38,5 +37,12 @@ public class Caught : MonoBehaviour
         yield return new WaitForSeconds(3);
         SceneManager.LoadScene("Menu");
 
+    }
+
+    public IEnumerator ActualDeathtTimer()
+    {
+        yield return new WaitForSeconds(3);
+        GameObject.Find("GameManager").GetComponent<InactiveManager>().Players.Remove(gameObject);
+        Destroy(gameObject);
     }
 }
