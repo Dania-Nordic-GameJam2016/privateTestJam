@@ -13,7 +13,7 @@ public class Timer : MonoBehaviour {
         if(timer <= 0)
         {
             timer = 0;
-            GameObject.Find("Canvas/Text").GetComponent<Text>().text = "GameOver!";
+            //GameObject.Find("Canvas/Text").GetComponent<Text>().text = "GameOver!";
         }
     }
     void OnGUI()
