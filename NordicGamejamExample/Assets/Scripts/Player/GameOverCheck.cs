@@ -34,7 +34,7 @@ public class GameOverCheck : MonoBehaviour {
         if(col.gameObject.name == "Player")
         {
             gameOver = true;
-            EndGameTriggerStuff();
+            //EndGameTriggerStuff();
         }
 
     }
@@ -42,15 +42,15 @@ public class GameOverCheck : MonoBehaviour {
     /// <summary>
     /// Skriver winning text på canvas, når spilleren trigger box collideren på EndGameTrigger
     /// </summary>
-    public void EndGameTriggerStuff()
-    {
-        if (GameObject.Find("EndGameTrigger").GetComponent<GameOverCheck>().GameOver)
-        {
-            //gameObject.SetActive(true);
-            GameObject.Find("Canvas/Text").GetComponent<Text>().text = "You won! :-)";
-            StartCoroutine(EndGame());
-        }
-    }
+    //public void EndGameTriggerStuff()
+    //{
+    //    if (GameObject.Find("EndGameTrigger").GetComponent<GameOverCheck>().GameOver)
+    //    {
+    //        //gameObject.SetActive(true);
+    //        GameObject.Find("Canvas/Text").GetComponent<Text>().text = "You won! :-)";
+    //        StartCoroutine(EndGame());
+    //    }
+    //}
 
     /// <summary>
     /// Venter 5 sekunder før den kører Menu scenen. 

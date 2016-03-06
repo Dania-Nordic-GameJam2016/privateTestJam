@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class InactiveManager : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class InactiveManager : MonoBehaviour
     public List<GameObject> Walls { get; set; }
     public List<GameObject> Players { get; set; }
     public List<GameObject> Agents { get; set; }
+    public Text winnerText;
     float timer;
     // Use this for initialization
     void Awake()
@@ -78,18 +80,41 @@ public class InactiveManager : MonoBehaviour
             }
             timer = 3;
         }
-        bool endGame = true;
-        foreach (GameObject item in Players)
+
+        if (Players.Count <= 1 && GlobalCommunicator.numberOfPlayers > 1)
         {
-            if (!item.GetComponent<Movement>().Imdead)
+            string gameWinner = "";
+            float widthPlayerOne = Screen.width * 0.25f;
+            float widthPlayerTwo = Screen.width * 0.75f;
+            if (GlobalCommunicator.numberOfPlayers == 2)
             {
-                endGame = false;
-
+                widthPlayerOne = Screen.width * 0.5f;
+                widthPlayerTwo = Screen.width * 0.5f;
             }
-        }
+            switch (Players[0].GetComponent<Movement>().player)
+            {
+                case global::Players.player1:
+                    winnerText.transform.position = new Vector3(widthPlayerOne, Screen.height * 0.75f);
+                    gameWinner = "Player 1";
+                    break;
+                case global::Players.player2:
+                    winnerText.transform.position = new Vector3(widthPlayerTwo, Screen.height * 0.75f);
+                    gameWinner = "Player 2";
+                    break;
+                case global::Players.player3:
+                    winnerText.transform.position = new Vector3(Screen.width * 0.25f, Screen.height * 0.25f);
+                    gameWinner = "Player 3";
+                    break;
+                case global::Players.player4:
+                    gameWinner = "Player 4";
+                    winnerText.transform.position = new Vector3(Screen.width * 0.75f, Screen.height * 0.25f);
+                    break;
+                default:
+                    break;
+            }
 
-        if (endGame)
-        {
+            winnerText.GetComponent<Text>().text = gameWinner + " won the game!";
+
             StartCoroutine(Players[0].GetComponent<Caught>().DeathtTimer());
         }
     }

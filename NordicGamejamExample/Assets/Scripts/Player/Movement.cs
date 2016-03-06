@@ -19,8 +19,7 @@ public class Movement : MonoBehaviour
     KeyCode altRunKey;
     [SerializeField]
     public float rotationSpeed = 1.8f;
-    [SerializeField]
-    Players player;
+    public Players player;
     string horizontal;
     string vertical;
     public bool Imdead { get; set; }
@@ -29,33 +28,49 @@ public class Movement : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         body = GetComponent<Rigidbody>();
+        GameObject.Find("GameManager").GetComponent<InactiveManager>().Players.Add(gameObject);
 
-        switch (player)
+
+        switch (GlobalCommunicator.numberOfPlayers)
         {
-            case Players.player1:
-                horizontal = "HorizontalP1";
-                vertical = "VerticalP1";
-                transform.GetChild(0).GetComponent<Camera>().rect = new Rect(0, 0.5f, 0.5f, 0.5f);
+            case 1:
+                transform.GetChild(0).GetComponent<Camera>().rect = new Rect(0, 0, 1, 1);
+                foreach (GameObject player in GameObject.Find("GameManager").GetComponent<InactiveManager>().Players)
+                {
+                    if (player.GetComponent<Movement>().player != Players.player1)
+                    {
+                        player.SetActive(false);
+                    }
+                }
                 break;
-            case Players.player2:
-                horizontal = "HorizontalP2";
-                vertical = "VerticalP2";
-                transform.GetChild(0).GetComponent<Camera>().rect = new Rect(0.5f, 0.5f, 0.5f, 0.5f);
+            case 2:
+                Pretty2P();
+                foreach (GameObject player in GameObject.Find("GameManager").GetComponent<InactiveManager>().Players)
+                {
+                    if (player.GetComponent<Movement>().player != Players.player1 && player.GetComponent<Movement>().player != Players.player2)
+                    {
+                        player.SetActive(false);
+                    }
+                }
                 break;
-            case Players.player3:
-                horizontal = "HorizontalP3";
-                vertical = "VerticalP3";
-                transform.GetChild(0).GetComponent<Camera>().rect = new Rect(0, 0, 0.5f, 0.5f);
+            case 3:
+                Pretty3P();
+                foreach (GameObject player in GameObject.Find("GameManager").GetComponent<InactiveManager>().Players)
+                {
+                    if (player.GetComponent<Movement>().player == Players.player4)
+                    {
+                        player.SetActive(false);
+                    }
+                }
                 break;
-            case Players.player4:
-                horizontal = "HorizontalP4";
-                vertical = "VerticalP4";
-                transform.GetChild(0).GetComponent<Camera>().rect = new Rect(0.5f, 0f, 0.5f, 0.5f);
+            case 4:
+                Pretty4P();
                 break;
             default:
                 break;
         }
-        GameObject.Find("GameManager").GetComponent<InactiveManager>().Players.Add(gameObject);
+
+        
     }
 
     // Update is called once per frame
@@ -82,7 +97,7 @@ public class Movement : MonoBehaviour
             if ((Input.GetKey(runKey) || Input.GetKey(altRunKey)) && Input.GetAxis(vertical) > 0)
             {
                 animator.SetBool("run", true);
-                rotationSpeed = 1.8f;
+                rotationSpeed = 2.5f;
             }
             else
             {
@@ -91,6 +106,79 @@ public class Movement : MonoBehaviour
             }
 
             transform.Rotate(new Vector3(0, Input.GetAxis(horizontal) * rotationSpeed, 0));
+        }
+    }
+
+    void Pretty2P()
+    {
+        switch (player)
+        {
+            case Players.player1:
+                horizontal = "HorizontalP1";
+                vertical = "VerticalP1";
+                transform.GetChild(0).GetComponent<Camera>().rect = new Rect(0, 0.5f, 1, 0.5f);
+                break;
+            case Players.player2:
+                horizontal = "HorizontalP2";
+                vertical = "VerticalP2";
+                transform.GetChild(0).GetComponent<Camera>().rect = new Rect(0, 0, 1, 0.5f);
+                break;
+            default:
+                break;
+        }
+
+    }
+
+    void Pretty3P()
+    {
+        switch (player)
+        {
+            case Players.player1:
+                horizontal = "HorizontalP1";
+                vertical = "VerticalP1";
+                transform.GetChild(0).GetComponent<Camera>().rect = new Rect(0, 0.5f, 0.5f, 0.5f);
+                break;
+            case Players.player2:
+                horizontal = "HorizontalP2";
+                vertical = "VerticalP2";
+                transform.GetChild(0).GetComponent<Camera>().rect = new Rect(0.5f, 0.5f, 0.5f, 0.5f);
+                break;
+            case Players.player3:
+                horizontal = "HorizontalP3";
+                vertical = "VerticalP3";
+                transform.GetChild(0).GetComponent<Camera>().rect = new Rect(0, 0, 0.5f, 0.5f);
+                break;
+            default:
+                break;
+        }
+    }
+
+    void Pretty4P()
+    {
+        switch (player)
+        {
+            case Players.player1:
+                horizontal = "HorizontalP1";
+                vertical = "VerticalP1";
+                transform.GetChild(0).GetComponent<Camera>().rect = new Rect(0, 0.5f, 0.5f, 0.5f);
+                break;
+            case Players.player2:
+                horizontal = "HorizontalP2";
+                vertical = "VerticalP2";
+                transform.GetChild(0).GetComponent<Camera>().rect = new Rect(0.5f, 0.5f, 0.5f, 0.5f);
+                break;
+            case Players.player3:
+                horizontal = "HorizontalP3";
+                vertical = "VerticalP3";
+                transform.GetChild(0).GetComponent<Camera>().rect = new Rect(0, 0, 0.5f, 0.5f);
+                break;
+            case Players.player4:
+                horizontal = "HorizontalP4";
+                vertical = "VerticalP4";
+                transform.GetChild(0).GetComponent<Camera>().rect = new Rect(0.5f, 0f, 0.5f, 0.5f);
+                break;
+            default:
+                break;
         }
     }
 }
