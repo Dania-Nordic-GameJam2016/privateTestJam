@@ -39,6 +39,8 @@ public class Movement : MonoBehaviour
                 {
                     if (player.GetComponent<Movement>().player != Players.player1)
                     {
+                        GameObject.Find("GameManager").GetComponent<InactiveManager>().Players.Remove(player);
+                        Destroy(player);
                         player.SetActive(false);
                     }
                 }
@@ -49,6 +51,8 @@ public class Movement : MonoBehaviour
                 {
                     if (player.GetComponent<Movement>().player != Players.player1 && player.GetComponent<Movement>().player != Players.player2)
                     {
+                        GameObject.Find("GameManager").GetComponent<InactiveManager>().Players.Remove(player);
+                        Destroy(player);
                         player.SetActive(false);
                     }
                 }
@@ -59,6 +63,8 @@ public class Movement : MonoBehaviour
                 {
                     if (player.GetComponent<Movement>().player == Players.player4)
                     {
+                        GameObject.Find("GameManager").GetComponent<InactiveManager>().Players.Remove(player);
+                        Destroy(player);
                         player.SetActive(false);
                     }
                 }
