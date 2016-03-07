@@ -117,5 +117,9 @@ public class InactiveManager : MonoBehaviour
 
             StartCoroutine(Players[0].GetComponent<Caught>().DeathtTimer());
         }
+        else if (Players.Count <= 0)
+        {
+            StartCoroutine(Players[0].GetComponent<Caught>().DeathtTimer());
+        }
     }
 }

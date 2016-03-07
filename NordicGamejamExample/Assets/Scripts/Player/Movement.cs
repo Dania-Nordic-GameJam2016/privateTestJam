@@ -34,6 +34,8 @@ public class Movement : MonoBehaviour
         switch (GlobalCommunicator.numberOfPlayers)
         {
             case 1:
+                horizontal = "HorizontalP1";
+                vertical = "VerticalP1";
                 transform.GetChild(0).GetComponent<Camera>().rect = new Rect(0, 0, 1, 1);
                 foreach (GameObject player in GameObject.Find("GameManager").GetComponent<InactiveManager>().Players)
                 {

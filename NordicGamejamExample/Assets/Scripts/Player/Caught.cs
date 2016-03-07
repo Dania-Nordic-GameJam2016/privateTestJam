@@ -27,9 +27,18 @@ public class Caught : MonoBehaviour
     /// </summary>
     public void GotCaught()
     {
-        animator.SetTrigger("death");
-        GetComponent<Movement>().Imdead = true;
-        StartCoroutine(ActualDeathtTimer());
+        if (GlobalCommunicator.numberOfPlayers == 1)
+        {
+            animator.SetTrigger("death");
+            GetComponent<Movement>().Imdead = true;
+            StartCoroutine(DeathtTimer());
+        }
+        else
+        {
+            animator.SetTrigger("death");
+            GetComponent<Movement>().Imdead = true;
+            StartCoroutine(ActualDeathtTimer());
+        }
     }
 
     public IEnumerator DeathtTimer()
