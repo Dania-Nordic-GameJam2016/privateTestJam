@@ -86,10 +86,12 @@ public class InactiveManager : MonoBehaviour
             string gameWinner = "";
             float widthPlayerOne = Screen.width * 0.25f;
             float widthPlayerTwo = Screen.width * 0.75f;
+            float heightPlayerTwo = Screen.height * 0.75f;
             if (GlobalCommunicator.numberOfPlayers == 2)
             {
                 widthPlayerOne = Screen.width * 0.5f;
                 widthPlayerTwo = Screen.width * 0.5f;
+                heightPlayerTwo = Screen.height * 0.25f;
             }
             switch (Players[0].GetComponent<Movement>().player)
             {
@@ -98,7 +100,7 @@ public class InactiveManager : MonoBehaviour
                     gameWinner = "Player 1";
                     break;
                 case global::Players.player2:
-                    winnerText.transform.position = new Vector3(widthPlayerTwo, Screen.height * 0.75f);
+                    winnerText.transform.position = new Vector3(widthPlayerTwo, heightPlayerTwo);
                     gameWinner = "Player 2";
                     break;
                 case global::Players.player3:
